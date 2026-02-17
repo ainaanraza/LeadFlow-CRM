@@ -25,20 +25,35 @@ if (getApps().length > 0) {
     firebaseConfig.apiKey &&
     typeof firebaseConfig.apiKey === 'string' &&
     firebaseConfig.apiKey !== 'undefined' &&
-    firebaseConfig.apiKey.length > 0
+    firebaseConfig.apiKey.length > 0 &&
+    !firebaseConfig.apiKey.includes('your-api-key')
 ) {
     try {
         app = initializeApp(firebaseConfig);
     } catch (e) {
-        console.warn('Firebase initialization failed (this is expected during build if env vars are missing):', e);
+        console.warn('Firebase initialization failed:', e);
     }
 }
 
-// Export services if app is initialized, otherwise undefined (prevents build crash)
+// Export services if app is initialized, otherwise undefined
 if (app) {
-    auth = getAuth(app);
-    db = getFirestore(app);
-    storage = getStorage(app);
+    try {
+        auth = getAuth(app);
+    } catch (e) {
+        console.warn('Firebase Auth initialization failed:', e);
+    }
+
+    try {
+        db = getFirestore(app);
+    } catch (e) {
+        console.warn('Firebase Firestore initialization failed:', e);
+    }
+
+    try {
+        storage = getStorage(app);
+    } catch (e) {
+        console.warn('Firebase Storage initialization failed:', e);
+    }
 }
 
 export { auth, db, storage };
