@@ -21,8 +21,17 @@ let storage: any;
 
 if (getApps().length > 0) {
     app = getApps()[0];
-} else if (firebaseConfig.apiKey) {
-    app = initializeApp(firebaseConfig);
+} else if (
+    firebaseConfig.apiKey &&
+    typeof firebaseConfig.apiKey === 'string' &&
+    firebaseConfig.apiKey !== 'undefined' &&
+    firebaseConfig.apiKey.length > 0
+) {
+    try {
+        app = initializeApp(firebaseConfig);
+    } catch (e) {
+        console.warn('Firebase initialization failed (this is expected during build if env vars are missing):', e);
+    }
 }
 
 // Export services if app is initialized, otherwise undefined (prevents build crash)
