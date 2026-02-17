@@ -60,10 +60,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }, []);
 
     const login = async (email: string, password: string) => {
+        if (!auth) return;
         await signInWithEmailAndPassword(auth, email, password);
     };
 
     const signup = async (name: string, email: string, password: string) => {
+        if (!auth) return;
         const cred = await createUserWithEmailAndPassword(auth, email, password);
         const newUser: Omit<User, 'id'> = {
             name,
@@ -76,11 +78,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     };
 
     const logout = async () => {
+        if (!auth) return;
         await signOut(auth);
         setUser(null);
     };
 
     const resetPassword = async (email: string) => {
+        if (!auth) return;
         await sendPasswordResetEmail(auth, email);
     };
 
