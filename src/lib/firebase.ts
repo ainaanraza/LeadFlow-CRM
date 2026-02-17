@@ -13,9 +13,24 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+// Initialize Firebase only if config is present or an app already exists
+let app;
+let auth: any;
+let db: any;
+let storage: any;
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app);
+if (getApps().length > 0) {
+    app = getApps()[0];
+} else if (firebaseConfig.apiKey) {
+    app = initializeApp(firebaseConfig);
+}
+
+// Export services if app is initialized, otherwise undefined (prevents build crash)
+if (app) {
+    auth = getAuth(app);
+    db = getFirestore(app);
+    storage = getStorage(app);
+}
+
+export { auth, db, storage };
 export default app;
