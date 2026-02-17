@@ -1,14 +1,14 @@
 'use client';
 
 import { useAuth } from '@/lib/auth';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, Suspense } from 'react';
 import { getLeads, getLeadsByRep, createLead, updateLead, deleteLead, getUsers, getStages, initializeStages } from '@/lib/firestore';
 import { Lead, User, PipelineStage, LEAD_SOURCES } from '@/types';
 import { formatCurrency, formatDate, getInitials } from '@/lib/utils';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function LeadsPage() {
+function LeadsPageContent() {
     const { user } = useAuth();
     const router = useRouter();
     const [leads, setLeads] = useState<Lead[]>([]);
@@ -306,5 +306,13 @@ export default function LeadsPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+export default function LeadsPage() {
+    return (
+        <Suspense fallback={<div>Loading filters...</div>}>
+            <LeadsPageContent />
+        </Suspense>
     );
 }
