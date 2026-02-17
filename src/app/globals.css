@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  --color-primary-50: #EEF2FF;
+  --color-primary-100: #E0E7FF;
+  --color-primary-200: #C7D2FE;
+  --color-primary-300: #A5B4FC;
+  --color-primary-400: #818CF8;
+  --color-primary-500: #4318FF;
+  /* Deep Blue from image */
+  --color-primary-600: #3311DB;
+  --color-primary-700: #250C9F;
+  --color-primary-800: #1E0A78;
+  --color-primary-900: #19085A;
+
+  --color-secondary-400: #33C5FF;
+  /* Light blue accent */
+
+  --color-surface-50: #F4F7FE;
+  /* Light grey/blue background from image */
+  --color-surface-100: #F3F6FF;
+  --color-surface-200: #E9EDF7;
+  --color-surface-300: #D8DCE9;
+  --color-surface-400: #A3AED0;
+  /* Text grey */
+  --color-surface-500: #707EAE;
+  /* Data grey */
+  --color-surface-600: #4B5675;
+  --color-surface-700: #2B3674;
+  /* Dark blue/black text */
+  --color-surface-800: #1B2559;
+  --color-surface-900: #111C44;
+
+  --color-success: #05CD99;
+  --color-warning: #FFB547;
+  --color-danger: #EE5D50;
+  --color-info: #4318FF;
+
+  --font-sans: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xl: 20px;
+  --radius-2xl: 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-50);
+  color: var(--color-surface-700);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-300);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-400);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Components */
+.card-base {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: 0px 18px 40px rgba(112, 144, 176, 0.12);
+  transition: all 0.2s ease;
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #868CFF 0%, #4318FF 100%);
+  color: white;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.btn-tab {
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-surface-500);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-tab:hover {
+  background: var(--color-surface-100);
+  color: var(--color-surface-700);
+}
+
+.btn-tab.active {
+  background: var(--color-surface-900);
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-pill {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-pill.primary {
+  background: var(--color-surface-900);
+  color: white;
+}
+
+.btn-pill.ghost {
+  background: transparent;
+  color: var(--color-surface-500);
+}
+
+.btn-pill.ghost:hover {
+  background: var(--color-surface-100);
+}
+
+/* Charts */
+.chart-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary-100);
+}
+
+.chart-dot.active {
+  background: var(--color-primary-500);
+  height: 24px;
+  border-radius: 10px;
+}
