@@ -1,4 +1,4 @@
-# LeadFlow CRM 🚀
+# LeadFlow CRM
 
 **The Intelligent Customer Relationship Management System**
 
@@ -6,7 +6,7 @@ LeadFlow CRM is a modern, data-driven CRM designed to help sales teams manage le
 
 ---
 
-## 🎯 Purpose
+##  Purpose
 
 The primary purpose of LeadFlow CRM is to **streamline the sales process** for small to medium-sized businesses. It eliminates the chaos of spreadsheets and disjointed tools by providing a centralized hub where:
 -   **Sales Reps** can focus on selling, with clear visibility into their daily tasks and active leads.
@@ -15,7 +15,7 @@ The primary purpose of LeadFlow CRM is to **streamline the sales process** for s
 
 ---
 
-## 🛠️ Functionality & Features
+##  Functionality & Features
 
 LeadFlow CRM offers a comprehensive suite of tools to manage the entire sales lifecycle.
 
@@ -85,13 +85,3 @@ src/
 ├── types/               # TypeScript type definitions
 └── ...
 ```
-
----
-
-## 🤝 Contribution
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-© 2026 LeadFlow CRM. All rights reserved.
